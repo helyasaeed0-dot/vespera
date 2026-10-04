@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --main-navbar-height: 80px;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* Remove corner dev indicators or badges cleanly */
+nextjs-portal,
+[data-nextjs-dev-indicator],
+[data-next-badge] {
+  display: none !important;
+}
+
+/* Profile capsule subtle wave animations */
+@keyframes waveFlow1 {
+  0%, 100% {
+    transform: translateY(0px) scaleY(1);
+  }
+  50% {
+    transform: translateY(-4px) scaleY(1.06);
+  }
+}
+
+@keyframes waveFlow2 {
+  0%, 100% {
+    transform: translateY(0px) scaleY(1);
+  }
+  50% {
+    transform: translateY(4px) scaleY(0.94);
+  }
+}
+
+@keyframes waveFlow3 {
+  0%, 100% {
+    transform: translateX(0px) translateY(0px);
+  }
+  50% {
+    transform: translateX(-16px) translateY(2px);
+  }
+}
+
+@keyframes waveFlow4 {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(18px);
+  }
+}
+
+.profile-wave-1 {
+  animation: waveFlow1 8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.profile-wave-2 {
+  animation: waveFlow2 11s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.profile-wave-3 {
+  animation: waveFlow3 14s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.profile-wave-4 {
+  animation: waveFlow4 18s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-wave-1,
+  .profile-wave-2,
+  .profile-wave-3,
+  .profile-wave-4,
+  .animate-modal-in,
+  .animate-overlay-in {
+    animation: none !important;
+  }
+}
+
+/* Modal Open Animation (fade + scale/translate) */
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes overlayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-modal-in {
+  animation: modalIn 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-overlay-in {
+  animation: overlayIn 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
